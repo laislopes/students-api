@@ -1,4 +1,5 @@
 import express from "express";
+import students from "./studentsRoutes.js";
 
 const routes = (app) => {
 
@@ -7,7 +8,8 @@ const routes = (app) => {
     });
 
     app.use(
-        express.json()
+        express.json(),
+        students
     );
 };
 
