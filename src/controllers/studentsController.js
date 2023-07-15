@@ -20,8 +20,7 @@ class StudentsController {
             const student = await students.findById(id);
         
             if(student) res.status(200).send(student);
-
-            next(new NotFoundError(`Book ${id} was not found`));
+            else next(new NotFoundError(`Book ${id} was not found`));
         } catch (error) {
             next(error);
         }
@@ -46,8 +45,7 @@ class StudentsController {
             const studentResult = await students.findByIdAndUpdate(id, { $set: req.body });
 
             if(studentResult) res.status(200).send({message: `The book ${id} has been updated successfully!`});
-
-            next(new NotFoundError(`Book ${id} was not found`));
+            else next(new NotFoundError(`Book ${id} was not found`));
         } catch (error) {
             next(error);
         }
@@ -60,8 +58,7 @@ class StudentsController {
             const studentResult = await students.findByIdAndDelete(id);
 
             if(studentResult) res.status(200).send({message: `The book ${id} has been deleted successfully!`});
-
-            next(new NotFoundError(`Book ${id} was not found`));
+            else next(new NotFoundError(`Book ${id} was not found`));
         } catch (error) {
             next(error);
         }
