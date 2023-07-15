@@ -17,8 +17,8 @@ class StudentsController {
             const { id } = req.params;
 
             const student = await students.findById(id);
-
-            if(!student) res.status(200).send(student);
+        
+            if(student) res.status(200).send(student);
         } catch (error) {
             console.log(error);
         }
@@ -42,7 +42,7 @@ class StudentsController {
 
             const studentResult = await students.findByIdAndUpdate(id, { $set: req.body });
 
-            if(!studentResult) res.status(200).send({message: `The book ${id} has been updated successfully!`});
+            if(studentResult) res.status(200).send({message: `The book ${id} has been updated successfully!`});
         } catch (error) {
             console.log(error);
         }
@@ -54,7 +54,7 @@ class StudentsController {
 
             const studentResult = await students.findByIdAndDelete(id);
 
-            if(!studentResult) res.status(200).send({message: `The book ${id} has been deleted successfully!`});
+            if(studentResult) res.status(200).send({message: `The book ${id} has been deleted successfully!`});
         } catch (error) {
             console.log(error);
         }
